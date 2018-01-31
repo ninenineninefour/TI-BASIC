@@ -1,0 +1,59 @@
+GridOff:AxesOff:PlotsOff :FnOff
+ZStandard:84→Xmin:72→Ymax:ZInteger
+Vertical 0
+Vertical 94
+Pxl-Off(0,0
+Pxl-Off(0,94
+Horizontal 0
+Horizontal 61
+4→dim(L₁
+{4,3,2,1→L₂
+1→P:44.32→N:3→D:N→X
+While 1
+If N=X
+Then
+SortA(L₂,L₁
+augment({N},L₁→L₁
+augment({1},1+L₂→L₂
+𝑖→P
+End
+While N=X
+Pxl-Off(62-ᴇ2fPart(X),int(X
+2.02+3int(31rand)+.03int(20rand→X
+Pxl-On(62-ᴇ2fPart(X),int(X
+End
+0→K
+For(I,0,7
+K+getKeynot(K→K
+End
+If K=105
+Pause
+3((K=26)-(k=24)+.01((K=25)-(K=34
+Ans+(D-Ans)not(Ans(Ans+D→D
+N+2D/3
+If pxl-Test(62-ᴇ2fPart(Ans),int(Ans
+Goto 99
+N+D→N
+L₁(abs(P
+Pt-On(int(N),ᴇ2fPart(2),2
+If not(imag(P
+Pt-Off(int(Ans),ᴇ2fPart(Ans),2
+abs(P→P
+N→L₁(P
+1+max(L₂→L₂(P
+1+P(P<dim(L₁→P
+End
+Lbl 99
+P→I
+Repeat I=P
+I-1
+Ans+dim(L₁)not(Ans→I
+L₁(I
+Pt-Off(int(Ans),ᴇ2fPart(Ans),2
+End
+ClrDraw
+ZStandard
+AxesOn
+Disp "SCORE:",dim(L₁)-5
+DelVar L₁
+DelVar L₂

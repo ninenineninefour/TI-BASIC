@@ -1,0 +1,128 @@
+// List of variables used:
+// L₁: List of coordinates of each segment of the "snake"
+// L₂: The order of each element of L₁
+// P: Index of the "head" segment
+// N: Coordinates of the next segment
+// D: Displacement from the previous segment to the next segment
+// X: Coordinates of the "food"
+// K: Last key pressed
+// I: Temporary variable used for loops
+
+// Turn off axes, grid, functions, and plots
+GridOff
+AxesOff
+PlotsOff 
+FnOff
+
+// Setup window size, bounds should be [0,62] and [0,94]
+ZStandard
+84→Xmin
+72→Ymax
+ZInteger
+
+// Draw box
+Vertical 0
+Vertical 94
+Pxl-Off(0,0
+Pxl-Off(0,94
+Horizontal 0
+Horizontal 61
+
+// Initialize up variables
+4→dim(L₁
+{4,3,2,1→L₂
+1→P
+44.32→N
+3→D
+N→X
+
+// Main game loop
+// Does not stop, loop exits via Goto
+While 1
+
+// Check if the "head" has reached the "food"
+If N=X
+Then
+// Add a new segment
+SortA(L₂,L₁
+augment({N},L₁→L₁
+augment({1},1+L₂→L₂
+𝑖→P
+End
+
+// Generate a new location for the "food"
+While N=X
+Pxl-Off(62-ᴇ2fPart(X),int(X
+2.02+3int(31rand)+.03int(20rand→X
+Pxl-On(62-ᴇ2fPart(X),int(X
+End
+
+// Wait about a second for the user's input
+0→K
+For(I,0,7
+K+getKeynot(K→K // K is not overwritten if it is 0
+End
+
+// Pause if the player presses ENTER (key #105)
+If K=105
+Pause
+
+// Get the modifier from the player's keypress
+// RIGHT is key #26, LEFT is key #24, UP is key #25, DOWN is key #34
+3((K=26)-(K=24)+.01((K=25)-(K=34
+
+// If this modifier is not zero, set D to the modifier
+Ans+(D-Ans)not(Ans(Ans+D→D
+
+// Check if the player hit a wall or themselves
+N+2D/3
+If pxl-Test(62-ᴇ2fPart(Ans),int(Ans
+Goto 99
+
+// Add D to N to get the next position
+N+D→N
+
+// Draw the next segment
+L₁(abs(P
+Pt-On(int(N),ᴇ2fPart(2),2
+
+// Erase the last segment, unless the game has just started
+If not(imag(P
+Pt-Off(int(Ans),ᴇ2fPart(Ans),2
+abs(P→P
+
+// Set N to the Pth element of L₁
+N→L₁(P
+
+// Update the Pth element of L₂
+1+max(L₂→L₂(P
+
+// Set P to P+1. If P is larger than the length of L₁, set it to 1 instead.
+1+P(P<dim(L₁→P
+
+// End of main game loop
+End
+
+// Game over
+Lbl 99
+
+// Erase each segment in reverse order
+P→I
+Repeat I=P
+I-1
+Ans+dim(L₁)not(Ans→I
+L₁(I
+Pt-Off(int(Ans),ᴇ2fPart(Ans),2
+End
+
+// Clear the graph screen and set it to standard settings
+ClrDraw
+ZStandard
+AxesOn
+
+// Output the player's score
+Disp "SCORE:",dim(L₁)-5
+
+// Remove L₁ and L₂ to clear out RAM
+DelVar L₁
+DelVar L₂
