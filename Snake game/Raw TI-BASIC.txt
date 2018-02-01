@@ -28,7 +28,7 @@ K+getKeynot(K→K
 End
 If K=105
 Pause
-3((K=26)-(k=24)+.01((K=25)-(K=34
+3((K=26)-(K=24)+.01((K=25)-(K=34
 Ans+(D-Ans)not(Ans(Ans+D→D
 N+2D/3
 If pxl-Test(62-ᴇ2fPart(Ans),int(Ans
