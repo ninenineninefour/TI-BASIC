@@ -1,5 +1,11 @@
-GridOff:AxesOff:PlotsOff :FnOff
-ZStandard:84→Xmin:72→Ymax:ZInteger
+GridOff
+AxesOff
+PlotsOff 
+FnOff
+ZStandard
+84→Xmin
+72→Ymax
+ZInteger
 Vertical 0
 Vertical 94
 Pxl-Off(0,0
@@ -8,7 +14,10 @@ Horizontal 0
 Horizontal 61
 4→dim(L₁
 {4,3,2,1→L₂
-1→P:44.32→N:3→D:N→X
+1→P
+44.32→N
+3→D
+N→X
 While 1
 If N=X
 Then
