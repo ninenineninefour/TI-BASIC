@@ -1,0 +1,52 @@
+2sin-1(1→θ
+Menu(“KNOWN?”,”SSS”,1,”SAS”,2,”ASA”,3,”AAS”,4,”SSA”,5
+Lbl 1
+Prompt A,B,C
+C²-A²-B²
+θ-cos-1(Ans/(2AB→D
+Lbl 6
+B²-A²-C²
+θ-cos-1(Ans/(2AC→E
+θ-D-E→F
+Goto 99
+Lbl 2
+Prompt A
+Input “θc?”,D
+Prompt B
+√(A²+B²+2ABcos(D→C
+Goto 6
+Lbl 3
+Input “θb?”,E
+Prompt A
+Input “θc?”,D
+θ-D-E→F
+Lbl 7
+Asin(E)/sin(F→B
+Lbl 8
+Asin(D)/sin(F→C
+Goto 99
+Lbl 4
+Input “θb?”,E
+Input “θa?”,F
+Prompt A
+θ-E-F→D
+Lbl 5
+Prompt A,B
+Input “θa?”,F
+sin-1(BA-1sin(F→E
+If B>A and 2E≠θ
+Then
+Menu(“IS θb OBTUSE?”,”YES”,9,”NO”,10
+Lbl 9
+θ-E→E
+Lbl 10
+End
+θ-E-F→D
+Goto 8
+Lbl 99
+ClrHome
+Disp “ A=”,” B=”,” C=”,”θa=”,”θb=”,”θc=
+{A,B,C,F,E,D
+For(I,1,6
+Output(I,4,Ans(I
+End
