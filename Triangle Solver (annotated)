@@ -1,0 +1,80 @@
+// The variable theta is initialized to 2× the inverse sine of 1, which is 180° or π radians.
+// This is done so that the program works in degrees or radians mode.
+2sin-1(1→θ
+// Prompt the user to select what type of solution they need 
+Menu(“KNOWN?”,”SSS”,1,”SAS”,2,”ASA”,3,”AAS”,4,”SSA”,5
+Lbl 1 // SSS (Side Side Side)
+// Prompt the user to enter the lengths of the three sides
+Prompt A,B,C
+// Now, calculate D (the angle between A and B
+// This is broken into two lines to save a character, since no parenthesis are needed
+C²-A²-B²
+θ-cos-1(Ans/(2AB→D
+// A label is placed here for later use
+Lbl 6
+// Now calculate E (the angle between A and C) just like before
+B²-A²-C²
+θ-cos-1(Ans/(2AC→E
+// Finally, calculate F (the angle between B and C)
+θ-D-E→F
+Goto 99 // Output the result
+Lbl 2 // SAS (Side Angle Side)
+// Prompt the user for A, D, and B
+Prompt A
+Input “θc?”,D
+Prompt B
+// Now calculate C
+√(A²+B²+2ABcos(D→C
+// Now the values of A, B, C, and D are known, so jump to the label inside of SSS
+Goto 6
+Lbl 3 // ASA (Angle Side Angle)
+// Prompt the user for E, A, and D
+Input “θb?”,E
+Prompt A
+Input “θc?”,D
+// Calculate F
+θ-D-E→F
+Lbl 7 // Label for future use
+// Calculate B via law of sines
+Asin(E)/sin(F→B
+Lbl 8 // Label for future use
+// Calculate C via law of sines
+Asin(D)/sin(F→C
+Goto 99 // Output the result
+Lbl 4 // AAS (Angle Angle Side)
+// Prompt the user for E, F, and A
+Input “θb?”,E
+Input “θa?”,F
+Prompt A
+// Calculate D
+θ-E-F→D
+Goto 7 // Jump to ASA
+Lbl 5 // SSA (Side Side Angle)
+// Prompt the user for A, B, and F
+Prompt A,B
+Input “θa?”,F
+// Calculate E
+sin-1(BA-1sin(F→E
+// If B>A and E is not a right angle, there are two possible solutions, so prompt the user for which one they want
+If B>A and 2E≠θ
+Then
+Menu(“IS θb OBTUSE?”,”YES”,9,”NO”,10
+Lbl 9
+// To make E obtuse, simply subtract it from theta (180° or π radians)
+θ-E→E
+Lbl 10
+End
+// Next, calculate D
+θ-E-F→D
+Goto 8 // Jump to inside ASA for the remaining calculations
+Lbl 99
+// Print the values of each side and angle
+// First, clear the home screen
+ClrHome
+// Print the labels for each value
+Disp “ A=”,” B=”,” C=”,”θa=”,”θb=”,”θc=
+// Finally, print the values themselves via a for loop
+{A,B,C,F,E,D
+For(I,1,6
+Output(I,4,Ans(I
+End
