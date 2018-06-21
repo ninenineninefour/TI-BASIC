@@ -1,0 +1,19 @@
+Prompt N,K
+Input
+X+iY→C
+Input
+N->dim(
+For(I,1,N
+e^(2πiI/N→L1(I
+End
+X+iY-C→R
+C+RL1→L1
+Lbl L
+L1(I→C
+I+K
+L1(Ans-N(Ans>N
+Line(real(C),imag(C),real(Ans),imag(Ans
+I+1
+Ans-N(Ans>N→I
+If I<N
+Goto L
